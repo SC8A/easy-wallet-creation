@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col justify-start w-[80wh] h-screen items-center bg-slate-300 gap-5"
+    class="flex flex-col justify-start w-[80wh] h-screen items-center  gap-5"
   >
     <div class="flex">
       <button
