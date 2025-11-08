@@ -1,24 +1,25 @@
 <template>
-  <h1>hello world</h1>
-  <button @click="createWallet">Create wallet</button>
-  <br />
-  <div>
-    <br />
-
-    <label for="">This is my public key bro</label>
-    <br />
-    <div v-for="account in accounts">
-      {{ account.publicKey }}
-      <br />
-      {{ account.secretKey }}
-      <br />
-      $ {{ account.balances ?? 0 }}
-      <br />
-      <button @click="fetch_funds(account.publicKey)">Fetch funds</button>
-      <button @click="fund_account(account.publicKey)">Fund account</button>
+  <div
+    class="flex flex-col justify-start w-[80wh] h-screen items-center bg-slate-300 gap-5"
+  >
+    <div class="flex">
+      <button
+        @click="createWallet"
+        class="center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+      >
+        Create wallet
+      </button>
+    </div>
+    <div v-for="account in accounts" class="flex justify-center">
+      <Card
+        :title="account.secretKey"
+        :subtitle="account.publicKey"
+        :badge="account.balances"
+        @action="fund_account(account.publicKey)"
+        action-text="Fondear cuenta"
+      />
     </div>
   </div>
-  <br />
 </template>
 
 <script lang="ts" setup>
@@ -66,3 +67,7 @@ async function createWallet() {
   });
 }
 </script>
+
+/
+<!-- <button @click="fetch_funds(account.publicKey)">Fetch funds</button>
+    <button @click="fund_account(account.publicKey)">Fund account</button> -->
